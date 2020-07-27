@@ -1,0 +1,647 @@
+basePath: /api/tda/student-management
+definitions:
+  controller.ExportDetailResponse:
+    properties:
+      data:
+        $ref: '#/definitions/model.ExportRecord'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  controller.ExportResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  controller.ImportDetailResponse:
+    properties:
+      data:
+        $ref: '#/definitions/model.ImportRecord'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  controller.ImportResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  controller.InventoryDetailResponse:
+    properties:
+      data:
+        $ref: '#/definitions/model.Inventory'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  controller.ListExportsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/model.ExportRecord'
+        type: array
+      message:
+        type: string
+      meta:
+        $ref: '#/definitions/model.Meta'
+      success:
+        type: boolean
+    type: object
+  controller.ListImportsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/model.ImportRecord'
+        type: array
+      message:
+        type: string
+      meta:
+        $ref: '#/definitions/model.Meta'
+      success:
+        type: boolean
+    type: object
+  controller.ListInventoriesResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/model.Inventory'
+        type: array
+      message:
+        type: string
+      meta:
+        $ref: '#/definitions/model.Meta'
+      success:
+        type: boolean
+    type: object
+  controller.ListProductResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/model.Product'
+        type: array
+      message:
+        type: string
+      meta:
+        $ref: '#/definitions/model.Meta'
+      success:
+        type: boolean
+    type: object
+  controller.ProductDetailResponse:
+    properties:
+      data:
+        $ref: '#/definitions/model.Product'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  controller.ProductResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  controller.UpdateExport:
+    properties:
+      product_id:
+        type: integer
+      quantity:
+        type: integer
+    type: object
+  controller.UpdateImport:
+    properties:
+      price:
+        type: number
+      product_id:
+        type: integer
+      quantity:
+        type: integer
+    type: object
+  controller.UpdateProduct:
+    properties:
+      name:
+        type: string
+    type: object
+  model.ExportRecord:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      locked:
+        type: boolean
+      price:
+        type: number
+      product_id:
+        type: integer
+      quantity:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  model.ImportRecord:
+    properties:
+      Locked:
+        type: boolean
+      created_at:
+        type: string
+      id:
+        type: integer
+      price:
+        type: number
+      product_id:
+        type: integer
+      quantity:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  model.Inventory:
+    properties:
+      average_price:
+        type: number
+      id:
+        type: integer
+      quantity:
+        type: integer
+    type: object
+  model.Meta:
+    properties:
+      page:
+        type: integer
+      pageSize:
+        type: integer
+      total:
+        type: integer
+    type: object
+  model.Product:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      status:
+        type: boolean
+      updated_at:
+        type: string
+    type: object
+  service.ExportPayload:
+    properties:
+      product_id:
+        type: integer
+      quantity:
+        type: integer
+    type: object
+  service.ImportPayload:
+    properties:
+      price:
+        type: number
+      product_id:
+        type: integer
+      quantity:
+        type: integer
+    type: object
+  service.ProductPayload:
+    properties:
+      name:
+        type: string
+      status:
+        type: boolean
+    type: object
+host: localhost:3000
+info:
+  contact: {}
+  description: This is list api for scheduling-api project
+  license: {}
+  title: Swagger scheduling-api project API
+  version: "2.0"
+paths:
+  /export:
+    post:
+      consumes:
+      - application/json
+      description: Create a new export record
+      parameters:
+      - description: export information
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/service.ExportPayload'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ExportResponse'
+      summary: Create a new export record
+      tags:
+      - export-apis
+  /export/{Id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a export record
+      parameters:
+      - description: export id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ExportDetailResponse'
+      summary: Get a export record
+      tags:
+      - export-apis
+  /export/active/{Id}:
+    put:
+      consumes:
+      - application/json
+      description: Active a export record
+      parameters:
+      - description: export id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ExportDetailResponse'
+      summary: Active a export record
+      tags:
+      - export-apis
+  /export/deactive/{Id}:
+    put:
+      consumes:
+      - application/json
+      description: DeActive a export record
+      parameters:
+      - description: export id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ExportDetailResponse'
+      summary: DeActive a export record
+      tags:
+      - export-apis
+  /export/update/{Id}:
+    put:
+      consumes:
+      - application/json
+      description: Update a export record
+      parameters:
+      - description: export id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      - description: export information
+        in: body
+        name: export
+        required: true
+        schema:
+          $ref: '#/definitions/controller.UpdateExport'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ExportDetailResponse'
+      summary: Update a export record
+      tags:
+      - export-apis
+  /exports:
+    get:
+      consumes:
+      - application/json
+      description: Get list of export records
+      parameters:
+      - description: page
+        in: query
+        name: page
+        type: integer
+      - description: pageSize
+        in: query
+        name: pageSize
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ListExportsResponse'
+      summary: Get list of export records
+      tags:
+      - export-apis
+  /import:
+    post:
+      consumes:
+      - application/json
+      description: Create a new import record
+      parameters:
+      - description: import information
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/service.ImportPayload'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ImportResponse'
+      summary: Create a new import record
+      tags:
+      - import-apis
+  /import/{Id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a import record
+      parameters:
+      - description: import id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ImportDetailResponse'
+      summary: Get a import record
+      tags:
+      - import-apis
+  /import/active/{Id}:
+    put:
+      consumes:
+      - application/json
+      description: Active a import record
+      parameters:
+      - description: import id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ImportDetailResponse'
+      summary: Active a import record
+      tags:
+      - import-apis
+  /import/deactive/{Id}:
+    put:
+      consumes:
+      - application/json
+      description: DeActive a import record
+      parameters:
+      - description: import id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ImportDetailResponse'
+      summary: DeActive a import record
+      tags:
+      - import-apis
+  /import/update/{Id}:
+    put:
+      consumes:
+      - application/json
+      description: Update a import record
+      parameters:
+      - description: import id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      - description: import information
+        in: body
+        name: import
+        required: true
+        schema:
+          $ref: '#/definitions/controller.UpdateImport'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ImportDetailResponse'
+      summary: Update a import record
+      tags:
+      - import-apis
+  /imports:
+    get:
+      consumes:
+      - application/json
+      description: Get list of import records
+      parameters:
+      - description: page
+        in: query
+        name: page
+        type: integer
+      - description: pageSize
+        in: query
+        name: pageSize
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ListImportsResponse'
+      summary: Get list of import records
+      tags:
+      - import-apis
+  /inventories:
+    get:
+      consumes:
+      - application/json
+      description: Get list of inventory records
+      parameters:
+      - description: page
+        in: query
+        name: page
+        type: integer
+      - description: pageSize
+        in: query
+        name: pageSize
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ListInventoriesResponse'
+      summary: Get list of inventory records
+      tags:
+      - inventory-apis
+  /inventory/{Id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a inventory record
+      parameters:
+      - description: inventory id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.InventoryDetailResponse'
+      summary: Get a inventory record
+      tags:
+      - inventory-apis
+  /product:
+    post:
+      consumes:
+      - application/json
+      description: Create a new product
+      parameters:
+      - description: product information
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/service.ProductPayload'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ProductResponse'
+      summary: Create a new product
+      tags:
+      - product-apis
+  /product/{Id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a product
+      parameters:
+      - description: product id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ProductDetailResponse'
+      summary: Get a product
+      tags:
+      - product-apis
+  /product/active/{Id}:
+    put:
+      consumes:
+      - application/json
+      description: Active a product
+      parameters:
+      - description: product id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ProductDetailResponse'
+      summary: Active a product
+      tags:
+      - product-apis
+  /product/deactive/{Id}:
+    put:
+      consumes:
+      - application/json
+      description: DeActive a product
+      parameters:
+      - description: product id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ProductDetailResponse'
+      summary: DeActive a product
+      tags:
+      - product-apis
+  /product/update/{Id}:
+    put:
+      consumes:
+      - application/json
+      description: Update a product
+      parameters:
+      - description: product id
+        in: path
+        name: Id
+        required: true
+        type: integer
+      - description: product information
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/controller.UpdateProduct'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ProductDetailResponse'
+      summary: Update a product
+      tags:
+      - product-apis
+  /products:
+    get:
+      consumes:
+      - application/json
+      description: Get list of products
+      parameters:
+      - description: page
+        in: query
+        name: page
+        type: integer
+      - description: pageSize
+        in: query
+        name: pageSize
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ListProductResponse'
+      summary: Get list of products
+      tags:
+      - product-apis
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
