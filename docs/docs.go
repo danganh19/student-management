@@ -42,7 +42,7 @@ var doc = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/service.ExportPayload"
+                            "$ref": "#/definitions/dto.ExportPayload"
                         }
                     }
                 ],
@@ -232,7 +232,7 @@ var doc = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/service.ImportPayload"
+                            "$ref": "#/definitions/dto.ImportPayload"
                         }
                     }
                 ],
@@ -485,7 +485,7 @@ var doc = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/service.ProductPayload"
+                            "$ref": "#/definitions/dto.ProductPayload"
                         }
                     }
                 ],
@@ -664,7 +664,7 @@ var doc = `{
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/model.ExportRecord"
+                    "$ref": "#/definitions/entity.ExportRecord"
                 },
                 "message": {
                     "type": "string"
@@ -689,7 +689,7 @@ var doc = `{
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/model.ImportRecord"
+                    "$ref": "#/definitions/entity.ImportRecord"
                 },
                 "message": {
                     "type": "string"
@@ -714,7 +714,7 @@ var doc = `{
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/model.Inventory"
+                    "$ref": "#/definitions/entity.Inventory"
                 },
                 "message": {
                     "type": "string"
@@ -730,14 +730,14 @@ var doc = `{
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/model.ExportRecord"
+                        "$ref": "#/definitions/entity.ExportRecord"
                     }
                 },
                 "message": {
                     "type": "string"
                 },
                 "meta": {
-                    "$ref": "#/definitions/model.Meta"
+                    "$ref": "#/definitions/entity.Meta"
                 },
                 "success": {
                     "type": "boolean"
@@ -750,14 +750,14 @@ var doc = `{
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/model.ImportRecord"
+                        "$ref": "#/definitions/entity.ImportRecord"
                     }
                 },
                 "message": {
                     "type": "string"
                 },
                 "meta": {
-                    "$ref": "#/definitions/model.Meta"
+                    "$ref": "#/definitions/entity.Meta"
                 },
                 "success": {
                     "type": "boolean"
@@ -770,14 +770,14 @@ var doc = `{
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/model.Inventory"
+                        "$ref": "#/definitions/entity.Inventory"
                     }
                 },
                 "message": {
                     "type": "string"
                 },
                 "meta": {
-                    "$ref": "#/definitions/model.Meta"
+                    "$ref": "#/definitions/entity.Meta"
                 },
                 "success": {
                     "type": "boolean"
@@ -790,14 +790,14 @@ var doc = `{
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/model.Product"
+                        "$ref": "#/definitions/entity.Product"
                     }
                 },
                 "message": {
                     "type": "string"
                 },
                 "meta": {
-                    "$ref": "#/definitions/model.Meta"
+                    "$ref": "#/definitions/entity.Meta"
                 },
                 "success": {
                     "type": "boolean"
@@ -808,7 +808,7 @@ var doc = `{
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/model.Product"
+                    "$ref": "#/definitions/entity.Product"
                 },
                 "message": {
                     "type": "string"
@@ -862,7 +862,7 @@ var doc = `{
                 }
             }
         },
-        "model.ExportRecord": {
+        "entity.ExportRecord": {
             "type": "object",
             "properties": {
                 "created_at": {
@@ -888,7 +888,7 @@ var doc = `{
                 }
             }
         },
-        "model.ImportRecord": {
+        "entity.ImportRecord": {
             "type": "object",
             "properties": {
                 "Locked": {
@@ -914,7 +914,7 @@ var doc = `{
                 }
             }
         },
-        "model.Inventory": {
+        "entity.Inventory": {
             "type": "object",
             "properties": {
                 "average_price": {
@@ -928,7 +928,7 @@ var doc = `{
                 }
             }
         },
-        "model.Meta": {
+        "entity.Meta": {
             "type": "object",
             "properties": {
                 "page": {
@@ -942,7 +942,7 @@ var doc = `{
                 }
             }
         },
-        "model.Product": {
+        "entity.Product": {
             "type": "object",
             "properties": {
                 "created_at": {
@@ -962,7 +962,7 @@ var doc = `{
                 }
             }
         },
-        "service.ExportPayload": {
+        "dto.ExportPayload": {
             "type": "object",
             "properties": {
                 "product_id": {
@@ -973,7 +973,7 @@ var doc = `{
                 }
             }
         },
-        "service.ImportPayload": {
+        "dto.ImportPayload": {
             "type": "object",
             "properties": {
                 "price": {
@@ -987,7 +987,7 @@ var doc = `{
                 }
             }
         },
-        "service.ProductPayload": {
+        "dto.ProductPayload": {
             "type": "object",
             "properties": {
                 "name": {

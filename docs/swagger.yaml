@@ -3,7 +3,7 @@ definitions:
   controller.ExportDetailResponse:
     properties:
       data:
-        $ref: '#/definitions/model.ExportRecord'
+        $ref: '#/definitions/entity.ExportRecord'
       message:
         type: string
       success:
@@ -19,7 +19,7 @@ definitions:
   controller.ImportDetailResponse:
     properties:
       data:
-        $ref: '#/definitions/model.ImportRecord'
+        $ref: '#/definitions/entity.ImportRecord'
       message:
         type: string
       success:
@@ -35,7 +35,7 @@ definitions:
   controller.InventoryDetailResponse:
     properties:
       data:
-        $ref: '#/definitions/model.Inventory'
+        $ref: '#/definitions/entity.Inventory'
       message:
         type: string
       success:
@@ -45,12 +45,12 @@ definitions:
     properties:
       data:
         items:
-          $ref: '#/definitions/model.ExportRecord'
+          $ref: '#/definitions/entity.ExportRecord'
         type: array
       message:
         type: string
       meta:
-        $ref: '#/definitions/model.Meta'
+        $ref: '#/definitions/entity.Meta'
       success:
         type: boolean
     type: object
@@ -58,12 +58,12 @@ definitions:
     properties:
       data:
         items:
-          $ref: '#/definitions/model.ImportRecord'
+          $ref: '#/definitions/entity.ImportRecord'
         type: array
       message:
         type: string
       meta:
-        $ref: '#/definitions/model.Meta'
+        $ref: '#/definitions/entity.Meta'
       success:
         type: boolean
     type: object
@@ -71,12 +71,12 @@ definitions:
     properties:
       data:
         items:
-          $ref: '#/definitions/model.Inventory'
+          $ref: '#/definitions/entity.Inventory'
         type: array
       message:
         type: string
       meta:
-        $ref: '#/definitions/model.Meta'
+        $ref: '#/definitions/entity.Meta'
       success:
         type: boolean
     type: object
@@ -84,19 +84,19 @@ definitions:
     properties:
       data:
         items:
-          $ref: '#/definitions/model.Product'
+          $ref: '#/definitions/entity.Product'
         type: array
       message:
         type: string
       meta:
-        $ref: '#/definitions/model.Meta'
+        $ref: '#/definitions/entity.Meta'
       success:
         type: boolean
     type: object
   controller.ProductDetailResponse:
     properties:
       data:
-        $ref: '#/definitions/model.Product'
+        $ref: '#/definitions/entity.Product'
       message:
         type: string
       success:
@@ -237,7 +237,7 @@ paths:
         name: product
         required: true
         schema:
-          $ref: '#/definitions/service.ExportPayload'
+          $ref: '#/definitions/dto.ExportPayload'
       responses:
         "200":
           description: OK
@@ -361,7 +361,7 @@ paths:
         name: product
         required: true
         schema:
-          $ref: '#/definitions/service.ImportPayload'
+          $ref: '#/definitions/dto.ImportPayload'
       responses:
         "200":
           description: OK
@@ -526,7 +526,7 @@ paths:
         name: product
         required: true
         schema:
-          $ref: '#/definitions/service.ProductPayload'
+          $ref: '#/definitions/dto.ProductPayload'
       responses:
         "200":
           description: OK

@@ -33,10 +33,10 @@ func init() {
 		InfoLog.Print("Erro: ", err)
 	}
 	db = dbO
-	/*	err = db.AutoMigrate(&model.User{}, &model.Student{}, &model.Employer{}, &model.School{}, &model.Post{}).Error
-		db.Model(&model.Student{}).AddForeignKey("user_id", "users(id)", "RESTRICT", "RESTRICT")
-		db.Model(&model.Employer{}).AddForeignKey("user_id", "users(id)", "RESTRICT", "RESTRICT")
-		db.Model(&model.School{}).AddForeignKey("user_id", "users(id)", "RESTRICT", "RESTRICT")
-		db.Model(&model.Post{}).AddForeignKey("user_id", "users(id)", "RESTRICT", "RESTRICT")*/
+	/*	err = db.AutoMigrate(&entity.User{}, &entity.Student{}, &entity.Employer{}, &entity.School{}, &entity.Post{}).Error
+		db.Model(&entity.Student{}).AddForeignKey("user_id", "users(id)", "RESTRICT", "RESTRICT")
+		db.Model(&entity.Employer{}).AddForeignKey("user_id", "users(id)", "RESTRICT", "RESTRICT")
+		db.Model(&entity.School{}).AddForeignKey("user_id", "users(id)", "RESTRICT", "RESTRICT")
+		db.Model(&entity.Post{}).AddForeignKey("user_id", "users(id)", "RESTRICT", "RESTRICT")*/
 
 }
